@@ -1,0 +1,29 @@
+{
+  "manifest_version": 3,
+  "name": "Gemini AI Text Enhancer",
+  "version": "1.1",
+  "description": "Grammar correction and context-aware text enhancement using Gemini AI.",
+  "permissions": [
+    "scripting",
+    "storage",
+    "tabs"
+  ],
+  "host_permissions": [
+    "https://generativelanguage.googleapis.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["content.js"]
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": "favicon.ico"
+  },
+  "options_page": "options.html"
+}

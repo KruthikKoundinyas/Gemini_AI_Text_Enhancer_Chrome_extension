@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Gemini AI Text Enhancer</title>
+    <link rel="preload" href="popup.js" as="script">
+    <link rel="preload" href="styles.css" as="style">
+
+    <style>
+      body {
+        background: #20232a;
+        color: #fff;
+        font-family: "Segoe UI", Arial, sans-serif;
+        width: 320px;
+        margin: 0;
+        padding: 18px 12px 12px 12px;
+      }
+      h3 {
+        margin: 0 0 13px 0;
+        font-size: 1.22em;
+      }
+      label {
+        font-size: 0.97em;
+      }
+      select,
+      textarea,
+      input[type="text"] {
+        width: 100%;
+        background: #181c20;
+        color: #fff;
+        border-radius: 4px;
+        border: 1px solid #364149;
+        padding: 7px;
+        font-size: 1em;
+        margin-bottom: 8px;
+        box-sizing: border-box;
+      }
+      textarea {
+        resize: vertical;
+      }
+      #sendBtn {
+        width: 100%;
+        background: #0a84ff;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        font-weight: bold;
+        padding: 10px 0;
+        font-size: 1.08em;
+        cursor: pointer;
+        margin-bottom: 7px;
+      }
+      #sendBtn:disabled {
+        background: #2e3b51;
+      }
+      #copyBtn {
+        float: right;
+        margin-top: -2px;
+        background: #263345;
+        color: #7fd7fd;
+        border: none;
+        border-radius: 4px;
+        padding: 6px 12px;
+        font-size: 0.96em;
+        cursor: pointer;
+      }
+      #copyBtn:hover {
+        background: #083b5c;
+      }
+      #resultBox {
+        width: 100%;
+        min-height: 80px;
+        background: #181c20;
+        border: 1px solid #384047;
+        color: #fafafc;
+        border-radius: 4px;
+        padding: 7px;
+        font-size: 1em;
+        margin-bottom: 8px;
+        white-space: pre-wrap;
+        word-break: break-word;
+      }
+      #errorBox {
+        color: #fa5959;
+        font-size: 0.98em;
+        min-height: 18px;
+        margin-top: 3px;
+      }
+    </style>
+  </head>
+  <body>
+    <h3>Gemini AI Text Enhancer</h3>
+    <label for="inputText">Text to enhance:</label>
+    <textarea
+      id="inputText"
+      rows="4"
+      placeholder="Paste or type your text here..."
+    ></textarea>
+    <label for="modeSelect">Enhancement:</label>
+    <select id="modeSelect">
+      <option value="enhance">Enhance Grammar</option>
+      <option value="formal">Make Formal</option>
+      <option value="json">Convert to JSON (for LLMs)</option>
+      <option value="summarize">Summarize</option>
+      <option value="bullets">Bullet Points</option>
+    </select>
+    <label for="promptInput">Prompt (optional):</label>
+    <input
+      type="text"
+      id="promptInput"
+      placeholder="e.g. Add detail, make concise"
+    />
+    <button id="sendBtn">Send to Gemini</button>
+    <label style="margin-bottom: 2px; margin-top: 12px">Output:</label>
+    <button id="copyBtn">Copy</button>
+    <div id="resultBox"></div>
+    <div id="errorBox"></div>
+
+    <!-- External JS -->
+    <script src="popup.js"></script>
+  </body>
+</html>

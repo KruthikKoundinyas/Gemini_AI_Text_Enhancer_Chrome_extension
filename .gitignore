@@ -11,7 +11,7 @@ Thumbs.db
 .vscode/
 .idea/
 
-# Sensitive files
+# Environment & config
 .env
 config.js
 
@@ -21,7 +21,10 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# Backup/temp
+# Backup / temp
 *.swp
 *.bak
 *.tmp
+
+# Media / misc
+*.Demo.mp4

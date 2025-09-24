@@ -14,6 +14,16 @@ Gemini AI Text Enhancer is a Chrome extension that provides **grammar correction
   - "Send" button to interact with Gemini AI
 - Popup interface for quick access.
 - Options page for customization (API key storage, settings).
+---
+
+### Demo Video
+
+<!-- [Gemini AI Text Enhancer Demo](Demo.mp4) -->
+<video width="100%" controls>
+  <source src="Demo.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+> 📽️ Click to watch the full demo.
 
 ---
 

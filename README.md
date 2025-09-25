@@ -16,6 +16,11 @@ Gemini AI Text Enhancer is a Chrome extension that provides **grammar correction
 - Options page for customization (API key storage, settings).
 ---
 
+### Download zip
+
+[![Download ZIP](https://img.shields.io/badge/Download-ZIP-blue?style=for-the-badge&logo=google-chrome)](https://github.com/KruthikKoundinyas/Gemini_AI_Text_Enhancer_Chrome_extension/archive/refs/tags/v1.0.0.zip)
+
+---
 ### Demo Video
 
 <!-- [Gemini AI Text Enhancer Demo](Demo.mp4) -->
@@ -25,6 +30,7 @@ Gemini AI Text Enhancer is a Chrome extension that provides **grammar correction
 </video>
 > 📽️ Click to watch the full demo.
 
+[Gemini AI Text Enhancer Demo](Demo.mp4)
 ---
 
 ### Project Structure

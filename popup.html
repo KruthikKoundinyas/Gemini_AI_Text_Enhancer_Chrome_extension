@@ -122,12 +122,11 @@ body {
       .collapsible-content {
         max-height: 0;
         overflow: hidden;
-        transition: max-height 0.3s ease, padding 0.3s ease;
+        transition: max-height 0.28s ease, padding 0.28s ease;
         padding: 0 12px;
       }
 
       .collapsible-content.open {
-        max-height: 1000px; /* large enough for content */
         padding: 12px;
       }
 
@@ -181,19 +180,62 @@ body {
     <script src="popup.js"></script>
 
     <script>
-      // Collapsible toggle script
-      document.addEventListener("DOMContentLoaded", function () {
+      (function () {
+        // Use a small utility so script doesn't depend on DOMContentLoaded timing
         const header = document.querySelector(".collapsible-header");
         const content = document.querySelector(".collapsible-content");
         const icon = document.querySelector(".toggle-icon");
 
-        header.addEventListener("click", function () {
-          content.classList.toggle("open");
-          icon.style.transform = content.classList.contains("open")
-            ? "rotate(180deg)"
-            : "rotate(0deg)";
+        if (!header || !content || !icon) {
+          // If something's missing, log to console for debugging
+          console.warn("Collapsible elements not found");
+          return;
+        }
+
+        function open() {
+          content.classList.add("open");
+          // Set maxHeight to scrollHeight for smooth transition
+          content.style.maxHeight = content.scrollHeight + "px";
+          header.setAttribute("aria-expanded", "true");
+          icon.textContent = "▲";
+          icon.style.transform = "rotate(180deg)";
+        }
+
+        function close() {
+          // Remove maxHeight to allow it to collapse (transitioned)
+          content.style.maxHeight = null;
+          // Use a small timeout to remove the open class after transition so padding animates nicely
+          content.addEventListener(
+            "transitionend",
+            function onEnd(e) {
+              if (e.propertyName === "max-height" && content.style.maxHeight === "") {
+                content.classList.remove("open");
+                content.removeEventListener("transitionend", onEnd);
+              }
+            }
+          );
+          header.setAttribute("aria-expanded", "false");
+          icon.textContent = "▼";
+          icon.style.transform = "rotate(0deg)";
+        }
+
+        function toggle() {
+          if (content.style.maxHeight && content.style.maxHeight !== "0px") {
+            close();
+          } else {
+            open();
+          }
+        }
+
+        header.addEventListener("click", toggle);
+        // keyboard accessibility (Enter and Space)
+        header.addEventListener("keydown", function (ev) {
+          if (ev.key === "Enter" || ev.key === " ") {
+            ev.preventDefault();
+            toggle();
+          }
         });
-      });
+      })();
     </script>
   </body>
 </html>
